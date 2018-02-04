@@ -2,6 +2,8 @@ package com.unidev.fn;
 
 public class CalculationOutput {
 
+    public ResultCode result;
+
     public String usSize;
     public String euroSize;
     public String ukSize;
