@@ -3,7 +3,7 @@ package com.unidev.fn;
 public class ShoesInput {
 
     public String size;
-    public String type;
+    public SizeType type;
 
     @Override
     public String toString() {
