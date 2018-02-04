@@ -1,4 +1,6 @@
-# Shoes size conversion function
+# About
+
+Shoes size conversion function, based on `fnproject.io`
 
 # Example requests
 
