@@ -29,9 +29,34 @@ public class ShoesFunction {
 
     public CalculationOutput handleRequest(CalculationInput calculationInput) {
 
-        CalculationOutput calculationOutput = new CalculationOutput();
+        try {
+            String size = calculationInput.size;
+            int index = calculationInput.type.getIndex();
 
-        return calculationOutput;
+            String[] matchedRow = null;
+            for(String[] line : SIZE_MATRIX) {
+                if (size.equalsIgnoreCase(line[index])) {
+                    matchedRow = line;
+                    break;
+                }
+            }
+            if (matchedRow == null) {
+                CalculationOutput calculationOutput = new CalculationOutput();
+                calculationOutput.result = ResultCode.NotFound;
+                return calculationOutput;
+            }
+
+            CalculationOutput calculationOutput = new CalculationOutput();
+            calculationOutput.result = ResultCode.Success;
+            for(SizeType sizeType : SizeType.values()) {
+                calculationOutput.size.put(sizeType, matchedRow[sizeType.getIndex()]);
+            }
+            return calculationOutput;
+        }catch (Exception e) {
+            CalculationOutput calculationOutput = new CalculationOutput();
+            calculationOutput.result = ResultCode.Error;
+            return calculationOutput;
+        }
     }
 
 }
