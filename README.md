@@ -4,7 +4,7 @@ Shoes size conversion function, based on `fnproject.io`
 
 # Deploy
 
-`fn deploy --app testapp --local`
+`fn deploy --app services-app --local`
 
 # Example requests
 
