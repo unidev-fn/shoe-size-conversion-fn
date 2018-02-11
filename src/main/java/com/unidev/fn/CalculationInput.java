@@ -1,17 +1,26 @@
 package com.unidev.fn;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
+
+@NoArgsConstructor
+@ToString
+@AllArgsConstructor
 public class CalculationInput {
 
-    public OperationType operationType = OperationType.Calculate;
-    public String size;
-    public SizeType type;
+    @Getter
+    @Setter
+    private OperationType operationType = OperationType.Calculate;
 
-    @Override
-    public String toString() {
-        final StringBuffer sb = new StringBuffer("CalculationInput{");
-        sb.append("size='").append(size).append('\'');
-        sb.append(", type='").append(type).append('\'');
-        sb.append('}');
-        return sb.toString();
-    }
+    @Getter
+    @Setter
+    private String size;
+
+    @Getter
+    @Setter
+    private SizeType type;
+
 }
