@@ -8,14 +8,20 @@ Shoes size conversion function, based on `fnproject.io`
 
 # Example requests
 
-`echo  '{"size":"4","type":"US"}' | fn run`
+operationType - Fetch, Calculate
 
+`echo  '{"size":"4","type":"US", "operationType":"Calculate"}' | fn run`
+
+`echo  '{"operationType":"Fetch"}' | fn run`
+
+`curl -X POST -d '{"size":"4","type":"US"}' http://localhost:8080/r/testapp/shoe-size-conversion-fn`
+  
+`{"result":"Success","size":{"CM":"20.8","Europe":"35","UK":"2","US":"4","Inc":"8.1875"}}`
+  
+
+```bash
+{"result":Success,"usSizes":["4","4.5","5","5.5","6","6.5","7","7.5","8","8.5","9","9.5","10","10.5","11","11.5","12"],"euSizes":["35","35","35-36","36","36-37","37","37-38","38","38-39","39","39-40","40","40-41","41","41-42","42","42-43"]}
 ```
-  curl -X POST -d '{"size":"4","type":"US"}' http://localhost:8080/r/testapp/shoe-size-conversion-fn
-  
-  {"result":"Success","size":{"CM":"20.8","Europe":"35","UK":"2","US":"4","Inc":"8.1875"}}
-  
-```  
 
 License
 =======

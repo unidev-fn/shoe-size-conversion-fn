@@ -1,6 +1,8 @@
 package com.unidev.fn;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -33,7 +35,7 @@ public class ShoesFunction {
     /**
      * FN entry point for performing calculations.
      */
-    public CalculationOutput handleRequest(CalculationInput calculationInput) {
+    public AbstractOutput handleRequest(CalculationInput calculationInput) {
 
         if (calculationInput.getOperationType() == OperationType.Calculate) {
             return calculateSize(calculationInput);
@@ -46,10 +48,27 @@ public class ShoesFunction {
         throw new IllegalArgumentException("Invalid operation");
     }
 
-    private CalculationOutput fetchSizes(CalculationInput calculationInput) {
-        return null;
+    /**
+     * Fetch available sizes.
+     */
+    private AbstractOutput fetchSizes(CalculationInput calculationInput) {
+
+        List<String> usSize = new ArrayList<>();
+        List<String> euSize = new ArrayList<>();
+
+        for(String[] row : SIZE_MATRIX) {
+            usSize.add(row[SizeType.US.getIndex()]);
+            euSize.add(row[SizeType.Europe.getIndex()]);
+        }
+
+        SizeOutput sizeOutput = SizeOutput.builder().usSizes(usSize).euSizes(euSize).build();
+        sizeOutput.setResult(ResultCode.Success);
+        return sizeOutput;
     }
 
+    /**
+     * Perform calculation operation
+     */
     private CalculationOutput calculateSize(CalculationInput calculationInput) {
         try {
             String size = calculationInput.getSize();
@@ -77,6 +96,7 @@ public class ShoesFunction {
             calculationOutput.setSize(sizeMap);
             return calculationOutput;
         }catch (Exception e) {
+            e.printStackTrace();
             CalculationOutput calculationOutput = new CalculationOutput();
             calculationOutput.setResult(ResultCode.Error);
             return calculationOutput;
