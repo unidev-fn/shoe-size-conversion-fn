@@ -31,9 +31,7 @@ public class ShoesFunction {
 
 
     /**
-     *
-     * @param calculationInput
-     * @return
+     * FN entry point for performing calculations.
      */
     public CalculationOutput handleRequest(CalculationInput calculationInput) {
 

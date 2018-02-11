@@ -6,6 +6,9 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
+/**
+ * Abstract output payload, for common fields in all outputs.
+ */
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString

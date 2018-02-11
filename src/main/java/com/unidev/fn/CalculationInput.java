@@ -7,6 +7,11 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
+/**
+ * Request object for calculations, can be used for: <br/>
+ *  - fetching available sizes <br/>
+ *  - do actual conversion <br/>
+ */
 @NoArgsConstructor
 @ToString
 @AllArgsConstructor

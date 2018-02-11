@@ -8,6 +8,9 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
+/**
+ * Calculation output object.
+ */
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
