@@ -1,5 +1,8 @@
 package com.unidev.fn;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * Function for conversion of shoes size.
  */
@@ -27,11 +30,32 @@ public class ShoesFunction {
     };
 
 
+    /**
+     *
+     * @param calculationInput
+     * @return
+     */
     public CalculationOutput handleRequest(CalculationInput calculationInput) {
 
+        if (calculationInput.getOperationType() == OperationType.Calculate) {
+            return calculateSize(calculationInput);
+        }
+
+        if (calculationInput.getOperationType() == OperationType.Fetch) {
+            return fetchSizes(calculationInput);
+        }
+
+        throw new IllegalArgumentException("Invalid operation");
+    }
+
+    private CalculationOutput fetchSizes(CalculationInput calculationInput) {
+        return null;
+    }
+
+    private CalculationOutput calculateSize(CalculationInput calculationInput) {
         try {
-            String size = calculationInput.size;
-            int index = calculationInput.type.getIndex();
+            String size = calculationInput.getSize();
+            int index = calculationInput.getType().getIndex();
 
             String[] matchedRow = null;
             for(String[] line : SIZE_MATRIX) {
@@ -42,19 +66,21 @@ public class ShoesFunction {
             }
             if (matchedRow == null) {
                 CalculationOutput calculationOutput = new CalculationOutput();
-                calculationOutput.result = ResultCode.NotFound;
+                calculationOutput.setResult(ResultCode.NotFound);
                 return calculationOutput;
             }
 
             CalculationOutput calculationOutput = new CalculationOutput();
-            calculationOutput.result = ResultCode.Success;
+            calculationOutput.setResult(ResultCode.Success);
+            Map<SizeType, String> sizeMap = new HashMap<>();
             for(SizeType sizeType : SizeType.values()) {
-                calculationOutput.size.put(sizeType, matchedRow[sizeType.getIndex()]);
+                sizeMap.put(sizeType, matchedRow[sizeType.getIndex()]);
             }
+            calculationOutput.setSize(sizeMap);
             return calculationOutput;
         }catch (Exception e) {
             CalculationOutput calculationOutput = new CalculationOutput();
-            calculationOutput.result = ResultCode.Error;
+            calculationOutput.setResult(ResultCode.Error);
             return calculationOutput;
         }
     }

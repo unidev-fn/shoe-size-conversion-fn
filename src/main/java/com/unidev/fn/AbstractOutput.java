@@ -1,6 +1,5 @@
 package com.unidev.fn;
 
-import java.util.Map;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -10,10 +9,11 @@ import lombok.ToString;
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
-public class CalculationOutput extends AbstractOutput {
+public abstract class AbstractOutput {
 
-    @Setter
     @Getter
-    private Map<SizeType, String> size;
+    @Setter
+    private ResultCode result;
+
 
 }
