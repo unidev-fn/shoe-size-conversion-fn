@@ -2,6 +2,7 @@ package com.unidev.fn;
 
 public class CalculationInput {
 
+    public OperationType operationType = OperationType.Calculate;
     public String size;
     public SizeType type;
 
