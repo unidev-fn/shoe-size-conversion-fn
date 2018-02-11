@@ -1,9 +1,9 @@
 package com.unidev.fn;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
+import java.util.HashSet;
 import java.util.Map;
+import java.util.Set;
 
 /**
  * Function for conversion of shoes size.
@@ -53,8 +53,8 @@ public class ShoesFunction {
      */
     private AbstractOutput fetchSizes(CalculationInput calculationInput) {
 
-        List<String> usSize = new ArrayList<>();
-        List<String> euSize = new ArrayList<>();
+        Set<String> usSize = new HashSet<>();
+        Set<String> euSize = new HashSet<>();
 
         for(String[] row : SIZE_MATRIX) {
             usSize.add(row[SizeType.US.getIndex()]);

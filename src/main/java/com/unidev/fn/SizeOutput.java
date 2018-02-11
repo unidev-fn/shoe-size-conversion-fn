@@ -1,6 +1,6 @@
 package com.unidev.fn;
 
-import java.util.List;
+import java.util.Set;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -19,10 +19,10 @@ public class SizeOutput extends AbstractOutput {
 
     @Setter
     @Getter
-    private List<String> usSizes;
+    private Set<String> usSizes;
 
     @Getter
     @Setter
-    private List<String> euSizes;
+    private Set<String> euSizes;
 
 }
